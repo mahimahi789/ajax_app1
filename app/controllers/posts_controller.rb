@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  
+
   def index  # indexアクションを定義した
     @posts = Post.order(id: "DESC")
   end
@@ -8,7 +8,7 @@ class PostsController < ApplicationController
  # end
 
   def create
-    Post.create(content: params[:content])
-    redirect_to action: :index
+    post = Post.create(content: params[:content])
+    render json:{ post: post }
   end
 end
